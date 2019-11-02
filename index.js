@@ -55,11 +55,7 @@ let sampleData =
     ];
 
 
-let svg = null;
 $(function(){
-    // SVG要素生成
-    svg = $(`<svg id="drawSvgField" x="0" y="0" width="2000" height="2000" viewBox="0 0 2000 2000"></svg>`).appendTo($("#drawField"));
-
     // 描画
     drawFlow(sampleData);
 });
@@ -70,6 +66,7 @@ function drawFlow(contentData){
     let offset = {x:20, y:20};
     let startPos = {x:20, y:20};
     let boxSize = {height: 32, width: 120};
+    let svg = $(`<svg id="drawSvgField" x="0" y="0" width="2000" height="2000" viewBox="0 0 2000 2000"></svg>`).appendTo($("#drawField"));
     draw(contentData[0], startPos);
 
     // param data データ
@@ -133,7 +130,6 @@ function drawFlow(contentData){
 // param point={x, y}
 // return 計算後の座標
     function considerSvgOffset(point){
-        console.log(point);
         let p = {x:0, y:0};
         p.x = point.left - $(svg).offset().left;
         p.y = point.top - $(svg).offset().top;
